@@ -54,14 +54,23 @@ class ViewController: UIViewController {
             
             if let newTask = text?.text {
                 self.saveTask(withTitle: newTask)
-                self.tableView.reloadData()
+                
+//                let indexPath = IndexPath(row: 0, section: 0)
+//                self.tableView.reloadRows(at: [indexPath], with: .left)
+
+                 self.tableView.reloadData()
             }
         }
         
         let cancelAction = UIAlertAction(title: "Отмена", style: .default)
+        let refreshAction = UIAlertAction(title: "Обновить", style: .default) { action in
+            let indexPath = IndexPath(row: 0, section: 0)
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
         
         ac.addAction(addTask)
         ac.addAction(cancelAction)
+        ac.addAction(refreshAction)
         
         self.present(ac, animated: true)
     }
@@ -120,6 +129,10 @@ extension ViewController: UITableViewDelegate {
 }
 
 extension ViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tasks.count
     }
@@ -127,6 +140,7 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = tasks[indexPath.row].title
+        print(indexPath.row)
         
         return cell
     }

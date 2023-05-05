@@ -66,9 +66,17 @@ class ViewController: UIViewController {
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
         }
         
+        let deleteAction = UIAlertAction(title: "Удалить", style: .default) { action in
+            self.tasks.remove(at: self.tasks.index(before: self.tasks.endIndex) )
+            let indexPath = IndexPath(row: self.tasks.count, section: 0)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            print(self.tasks.count)
+        }
+        
         ac.addAction(addTask)
         ac.addAction(cancelAction)
         ac.addAction(refreshAction)
+        ac.addAction(deleteAction)
         
         self.present(ac, animated: true)
     }

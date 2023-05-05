@@ -53,7 +53,8 @@ class ViewController: UIViewController {
             let text = ac.textFields?.first
             
             if let newTask = text?.text {
-                
+                self.saveTask(withTitle: newTask)
+                self.tableView.reloadData()
             }
         }
         
@@ -70,8 +71,22 @@ class ViewController: UIViewController {
     
     // MARK: - Private Methods
     
-    private func saveTask() {
+    private func saveTask(withTitle title: String) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
         
+        guard let entity = NSEntityDescription.entity(forEntityName: "Tasks", in: context) else { return }
+        
+        let taskObject = Tasks(entity: entity, insertInto: context)
+        taskObject.title = title
+        
+        do {
+            try context.save()
+            tasks.append(taskObject)
+            
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
     
     private func removeAllTasks() {

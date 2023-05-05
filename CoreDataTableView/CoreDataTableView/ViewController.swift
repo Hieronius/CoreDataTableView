@@ -67,6 +67,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction private func removeTasksAction(_ sender: UIBarButtonItem) {
+        removeAllTasks()
     }
     
     // MARK: - Private Methods
@@ -90,8 +91,27 @@ class ViewController: UIViewController {
     }
     
     private func removeAllTasks() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
         
-    }
+        let fetchRequest: NSFetchRequest<Tasks> = Tasks.fetchRequest()
+        
+        if let tasks = try? context.fetch(fetchRequest) {
+            for task in tasks {
+                context.delete(task)
+                
+                if let index = self.tasks.firstIndex(of: task) {
+                    self.tasks.remove(at: index)
+                }
+            }
+        }
+        do {
+            try context.save()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        self.tableView.reloadData()
+        }
 
 }
 

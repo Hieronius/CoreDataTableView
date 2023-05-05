@@ -14,6 +14,7 @@
 		DD89A9672A053CF000A13553 /* CoreDataTableView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD89A9652A053CF000A13553 /* CoreDataTableView.xcdatamodeld */; };
 		DD89A9692A053CF400A13553 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD89A9682A053CF400A13553 /* Assets.xcassets */; };
 		DD89A96C2A053CF400A13553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD89A96A2A053CF400A13553 /* LaunchScreen.storyboard */; };
+		DD89A9752A05444900A13553 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD89A9742A05444900A13553 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		DD89A9682A053CF400A13553 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD89A96B2A053CF400A13553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD89A96D2A053CF400A13553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD89A9742A05444900A13553 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				DD89A95C2A053CF000A13553 /* AppDelegate.swift */,
 				DD89A95E2A053CF000A13553 /* SceneDelegate.swift */,
 				DD89A9602A053CF000A13553 /* ViewController.swift */,
+				DD89A9732A05442C00A13553 /* Extensions */,
 				DD89A9622A053CF000A13553 /* Main.storyboard */,
 				DD89A9682A053CF400A13553 /* Assets.xcassets */,
 				DD89A96A2A053CF400A13553 /* LaunchScreen.storyboard */,
@@ -68,6 +71,14 @@
 				DD89A9652A053CF000A13553 /* CoreDataTableView.xcdatamodeld */,
 			);
 			path = CoreDataTableView;
+			sourceTree = "<group>";
+		};
+		DD89A9732A05442C00A13553 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DD89A9742A05444900A13553 /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD89A9752A05444900A13553 /* UIViewController+Extension.swift in Sources */,
 				DD89A9672A053CF000A13553 /* CoreDataTableView.xcdatamodeld in Sources */,
 				DD89A9612A053CF000A13553 /* ViewController.swift in Sources */,
 				DD89A95D2A053CF000A13553 /* AppDelegate.swift in Sources */,

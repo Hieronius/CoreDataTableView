@@ -16,17 +16,54 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fiX-6M-fRS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="q5o-vE-m3a">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q5o-vE-m3a" id="fAr-7i-oUh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="iLf-Lz-Cte"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Lcv-Iu-4XV"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fiX-6M-fRS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7tE-mB-ktw"/>
+                            <constraint firstAttribute="bottom" secondItem="fiX-6M-fRS" secondAttribute="bottom" id="8th-Ri-FJq"/>
+                            <constraint firstAttribute="trailing" secondItem="fiX-6M-fRS" secondAttribute="trailing" id="Xey-qe-7P9"/>
+                            <constraint firstItem="fiX-6M-fRS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="o0s-9H-raZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="ToDoList" id="1Th-ro-3J2">
-                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="5TM-ql-Olf"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="l72-A1-2eS"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="5TM-ql-Olf">
+                            <connections>
+                                <action selector="removeTasksAction:" destination="BYZ-38-t0r" id="Fa3-jh-06d"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="l72-A1-2eS">
+                            <connections>
+                                <action selector="addTaskAction:" destination="BYZ-38-t0r" id="Tsc-SQ-0WE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="fiX-6M-fRS" id="Zya-BH-d0d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973.28244274809151" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="972" y="-2.2488755622188905"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3J6-Dn-q8o">

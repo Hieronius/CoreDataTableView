@@ -31,11 +31,15 @@ class ViewController: UIViewController {
         super.viewWillAppear(true)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let container = appDelegate.persistentContainer.viewContext
+        let context = appDelegate.persistentContainer.viewContext
         
         let fetchRequest: NSFetchRequest<Tasks> = Tasks.fetchRequest()
         
-        
+        do {
+            tasks = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+                print(error.localizedDescription)
+            }
     }
     
     // MARK: - IBActions

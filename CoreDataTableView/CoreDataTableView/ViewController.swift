@@ -54,11 +54,9 @@ class ViewController: UIViewController {
             
             if let newTask = text?.text {
                 self.saveTask(withTitle: newTask)
-                
-//                let indexPath = IndexPath(row: 0, section: 0)
-//                self.tableView.reloadRows(at: [indexPath], with: .left)
-
-                 self.tableView.reloadData()
+                 // self.tableView.reloadData()
+                let indexPath = IndexPath(row: self.tasks.count - 1, section: 0)
+                self.tableView.insertRows(at: [indexPath], with: .automatic)
             }
         }
         
@@ -93,6 +91,8 @@ class ViewController: UIViewController {
         do {
             try context.save()
             tasks.append(taskObject)
+//            let indexPath = IndexPath(row: self.tasks.count - 1, section: 0)
+//            self.tableView.insertRows(at: [indexPath], with: .automatic)
             
         } catch let error as NSError {
             print(error.localizedDescription)
@@ -130,9 +130,6 @@ extension ViewController: UITableViewDelegate {
 
 extension ViewController: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tasks.count
     }

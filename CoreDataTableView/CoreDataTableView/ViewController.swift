@@ -54,18 +54,21 @@ class ViewController: UIViewController {
             
             if let newTask = text?.text {
                 self.saveTask(withTitle: newTask)
-                 // self.tableView.reloadData()
+                // Adding new row with animation
                 let indexPath = IndexPath(row: self.tasks.count - 1, section: 0)
                 self.tableView.insertRows(at: [indexPath], with: .automatic)
             }
         }
         
         let cancelAction = UIAlertAction(title: "Отмена", style: .default)
+        
+        // Refresh only specific row of the tableView
         let refreshAction = UIAlertAction(title: "Обновить", style: .default) { action in
             let indexPath = IndexPath(row: 0, section: 0)
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
         }
         
+        // Delete task with animation (It's will not delete task from CoreData
         let deleteAction = UIAlertAction(title: "Удалить", style: .default) { action in
             self.tasks.remove(at: self.tasks.index(before: self.tasks.endIndex) )
             let indexPath = IndexPath(row: self.tasks.count, section: 0)
